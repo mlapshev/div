@@ -1,0 +1,509 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+    article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+    ol,ul{list-style:none;padding:0;margin:0;}
+    blockquote,q{quotes:none;}
+    blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+    table{border-collapse:collapse;border-spacing:0;}
+    /* start editing from here */
+    a{text-decoration:none;}
+    .txt-rt{text-align:right;}/* text align right */
+    .txt-lt{text-align:left;}/* text align left */
+    .txt-center{text-align:center;}/* text align center */
+    .float-rt{float:right;}/* float right */
+    .float-lt{float:left;}/* float left */
+    .clear{clear:both;}/* clear float */
+    .pos-relative{position:relative;}/* Position Relative */
+    .pos-absolute{position:absolute;}/* Position Absolute */
+    .vertical-base{ vertical-align:baseline;}/* vertical align baseline */
+    .vertical-top{  vertical-align:top;}/* vertical align top */
+    .underline{ padding-bottom:5px; border-bottom: 1px solid #eee; margin:0 0 20px 0;}/* Add 5px bottom padding and a underline */
+    nav.vertical ul li{ display:block;}/* vertical menu */
+    nav.horizontal ul li{   display: inline-block;}/* horizontal menu */
+    img{max-width:100%;}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Thin.eot');
+    src: local('Roboto Thin'), local('Roboto-Thin'),
+        url('../fonts/Roboto-Thin.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Roboto-Thin.woff') format('woff'),
+        url('../fonts/Roboto-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    background: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+}
+
+.wrapper {
+    box-sizing: border-box;
+    width: 640px;
+    margin: 0 auto;
+    text-align: center;
+	margin-top: 150px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.timer {
+    font-family: 'Roboto', sans-serif;
+    font-size: 100px;
+    font-weight: 100;
+    display: inline-block;
+    vertical-align: top;
+    letter-spacing: 5px;
+}
+.clock {
+	font-family: 'Roboto', sans-serif;
+}
+.text {
+    font-size: 18px;
+}
+
+.clock {
+    margin-top: 30px;
+}
+
+.clock .column {
+    display: inline-block;
+    width: 21%;
+}
+
+p {
+    line-height: 27px;
+}
+
+h1 {
+    font-size: 55px;
+   /* margin: 75px 0 50px;*/
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	margin-top: 25%;
+}
+
+h2 {
+    font-size: 31px;
+    margin-top: 20px;
+    margin: 50px 0 30px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+}
+
+h3 {
+    font-size: 16px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+}
+
+a {
+    color: #a3deff;
+    text-decoration: none;
+}
+
+.days {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .wrapper {
+        width: 100%;
+        padding: 0 20px;
+    }
+    .timer {
+        font-size: 35px;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.clear-loading {
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.spinner {
+    width: 100px;
+    height: 100px;
+}
+
+.spinner > span, .spinner > span:before, .spinner > span:after {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.spinner > span {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-left-color: transparent;
+    -webkit-animation: effect-2 2s infinite linear;
+    -moz-animation: effect-2 2s infinite linear;
+    -o-animation: effect-2 2s infinite linear;
+    -ms-animation: effect-2 2s infinite linear;
+    animation: effect-2 2s infinite linear;
+}
+
+.spinner > span:before {
+    width: 75%;
+    height: 75%;
+    border-right-color: transparent;
+}
+
+.spinner > span:after {
+    width: 50%;
+    height: 50%;
+    border-bottom-color: transparent;
+}
+
+@-webkit-keyframes effect-2 {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes effect-2 {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.footer {
+    margin: 100px 10px 20px;
+}
+
+.footer p {
+    font-size: 26px;
+    color: #EEE;
+    line-height: 25px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+}
+
+.footer p a {
+    color: #EEE;
+	text-decoration: none;
+	
+}
+
+.footer p a:hover {
+    color: #FFF;
+}
+
+/*-- //Index-Page-Styling --*/
+
+
+
+
+
+
+
+
+
+
+/*-- Responsive-Code --*/
+
+@media screen and (max-width: 1920px) {
+    h1 {
+        /*margin: 100px 0;*/
+		margin-top: 25%;
+    }
+    h2 {
+        margin: 50px 0;
+    }
+    .clock {
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width: 1680px) {
+    h1 {
+        /*margin: 100px 0 50px;*/
+		margin-top: 25%;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    h1 {
+       /* margin: 75px 0 50px;*/
+	   margin-top: 25%;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    h1 {
+       /* margin: 50px 0;*/
+		margin-top: 25%;
+    }
+    h2 {
+        margin: 50px 0 30px;
+    }
+    .clock {
+        margin-top: 30px;
+    }
+    .footer {
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    h1 {
+        font-size: 50px;
+       /* margin: 40px 0;*/
+		margin-top: 25%;
+    }
+    .spinner {
+        width: 90px;
+        height: 90px;
+    }
+    h2 {
+        margin: 30px 0;
+    }
+    .timer {
+        font-size: 75px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    h1 {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    h1 {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    h1 {
+        font-size: 30px;
+     /*   margin: 30px 0;*/
+		margin-top: 25%;
+    }
+    .spinner {
+        width: 75px;
+        height: 75px;
+    }
+    h2 {
+        margin: 20px 0;
+        font-size: 25px;
+    }
+    h3 {
+        font-size: 14px;
+    }
+    .timer {
+        font-size: 65px;
+        letter-spacing: 0;
+    }
+    .footer p {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .wrapper {
+        padding: 0 10px;
+    }
+    .text {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 384px) {
+    .timer {
+        font-size: 55px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    h1 {
+        font-size: 25px;
+     /*   margin: 30px 0;*/
+		margin-top: 25%;
+    }
+    .timer {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .clock {
+        margin-left: -20px;
+    }
+    .clock .column {
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .clock {
+        margin-left: -10px;
+    }
+    .text {
+        font-size: 13px;
+    }
+}
+
+/*-- //Responsive-Code --*/
+
+
+
+/* Стили формы */
+#application {
+    max-width: 450px;
+    margin: 0 auto;
+}
+ 
+/*Стили полей для ввода*/
+#applicationName, #applicationEmail, #applicationTelephone, select {
+    width: 100%;
+    height: 55px;
+    background: none;
+    margin-top: 25px;
+    border: 1px solid #fff;
+    border-radius: 40px;
+    text-align: center;
+    color: #fff;
+    font-size: 22px;
+	font-family: 'Roboto';
+}
+.select {
+	position: relative;
+}
+	.select:after {
+		content: "▼";
+		padding: 0 8px;
+		font-size: 20px;
+		position: absolute;
+		right: 8px;
+		top: 40px;
+		z-index: 1;
+		text-align: center;
+		width: 10%;
+		height: 100%;
+		pointer-events: none;
+		box-sizing: border-box;
+		opacity: 0.6;
+	}
+	.select select{
+		  -webkit-appearance: none;
+	  -moz-appearance: none;
+	  appearance: none;
+	}
+/*Стили полей при клике по ним*/
+#applicationName:focus, #applicationEmail:focus, #applicationTelephone:focus {
+    border: 1px solid #30ad64;
+}
+ 
+/*Стили текста, выводящегося в placeholder*/
+::-webkit-input-placeholder {
+    color: #efefef;
+    font-family: 'Roboto';
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+ 
+::-moz-placeholder  {
+    color: #fff;
+    font-family: 'Roboto';
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}  /* Firefox 19+ */
+ 
+:-moz-placeholder {
+    color: #fff;
+   font-family: 'Roboto';
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}  /* Firefox 18- */
+ 
+:-ms-input-placeholder {
+    color: #fff;
+    font-family: 'Roboto';
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+ 
+::placeholder {
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+
+/*Стили для кнопки*/
+.applicationButton {
+    margin-top: 25px;
+    background: #30ad64;
+    border: none;
+    width: 100%;
+    height: 73px;
+    border-radius: 40px;
+    color: #fff;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-family: 'PT Sans', sans-serif;
+    cursor: pointer;
+}
+    .applicationButton:hover {
+        background: #d68c18;
+    }
+#first_block p {
+	line-height: 27px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	font-size: 20px;
+}	
+#second_block {	
+	border: 1px solid #30ad64;
+	padding: 20px;
+	margin: 20px 0;
+	border-radius: 25px;
+	font-size: 31px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	
+}

@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>ПЕРВЫЙ В РОССИИ МАРКЕТПЛЕЙС ДЕТСКИХ ИГРУШЕК, ТОВАРОВ И УСЛУГ</title>
+    <!-- For-Mobile-Apps -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- //For-Mobile-Apps -->
+
+    <!-- Style -->
+        <link href="css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="css/style.css?v_1.3" type="text/css"/>
+    <!-- //Style -->
+
+    <!-- Fonts 
+        <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>-->
+    <!-- Fonts -->
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135539882-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-135539882-1');
+</script>
+
+</head>
+<!-- //Head -->
+
+<!-- Body -->
+<body>
+
+    <div class="container">
+        <h1>ПЕРВЫЙ В РОССИИ</BR>МАРКЕТПЛЕЙС ДЕТСКИХ ИГРУШЕК,</BR>ТОВАРОВ И УСЛУГ</h1>
+
+    </div>
+
+    <div class="wrapper">
+		<div id="first_block" style="display: block">
+		
+			<h2>Уважаемые клиенты и партнеры!</br>Совсем скоро состоится открытие Маркетплейса детских игрушек, товаров и услуг №1 в России. Если вы хотите первыми узнать о старте, заполните форму ниже:</h2>
+			<p>30 продавцов и 100 покупателей получат бонусы в день запуска.</p>
+
+	
+			<form id="application" action="send.php" method="POST" name=" application ">
+		
+			   <input name="name" id="applicationName" maxlength="20" placeholder="Как вас зовут" required />
+			   <div class="select">
+					<select name="napravlenie" required >
+						<option selected disabled>Вы покупатель или продавец?</option>
+						<option value="Оптовое" onClick="document.getElementById('format_block').style.display = 'block';">Продавец</option>
+						<option value="Розничное" onClick="document.getElementById('format_block').style.display = 'none'">Покупатель</option>
+					</select>
+				</div>
+			 
+				<div class="select" id="format_block" style="display: none;">
+					<select name="format" >
+						<option selected disabled>Вид бизнеса:</option>
+						<option value="Оптовая продажа">Оптовая продажа</option>
+						<option value="Розничная продажа">Розничная продажа</option>
+						<option value="Оптово-розничная продажа">Оптово-розничная продажа</option>
+						<option value="Проведение праздников">Проведение праздников</option>
+						<option value="Прочие услуги для детей">Прочие услуги для детей</option>
+					</select>
+				</div>
+				
+			   <input name="email" type="email" id="applicationEmail" placeholder="Введите ваш E-mail" required />
+			   <input name="telephone" type="Tel" id="applicationTelephone" placeholder="Введите ваш телефон" required />
+			   <div class="select">
+				   <select name="svyaz" required >
+						<option selected disabled>Желаемый способ связи</option>
+						<option value="Email">Email</option>
+						<option value="Телефон">Телефон</option>
+					</select>
+				</div>
+			   <button id="btncontcall" class="applicationButton" type="submit" form="application">Сообщите мне об открытии!</button>
+	
+			</form>		
+		</div>  
+		
+
+    </div>
+
+    <div class="footer">
+        <p><a href="/">ИГРУШКИ.РФ</a></p>
+    </div>
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(52604464, "init", {
+        id:52604464,
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/52604464" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!--/Yandex.Metrika counter -->
+	
+<script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
+<script>
+$(function(){
+  $("#applicationTelephone").mask("+7(999)999-99-99");
+});
+</script>		
+	
+</body>
+<!-- //Body -->
+
+</html>
